@@ -1,0 +1,61 @@
+.header {
+  z-index: 100 !important;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+  background-color: rgba(255, 255, 255, 90%);
+
+  .logoWrapper {
+    width: 20%;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+      width: 70px;
+      height: 45px;
+    }
+
+    .logo:hover {
+      cursor: pointer;
+    }
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .logout {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 2px solid transparent;
+    font-size: large;
+    margin-right: 10%;
+    border-radius: 10px;
+    margin-left: auto;
+    padding: 10px;
+    cursor: pointer;
+
+    i {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+    }
+  }
+
+  .logout:hover {
+    transition: .5s;
+    border: 2px solid black;
+  }
+
+  .logout:active {
+    transition: .5s;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+  }
+}

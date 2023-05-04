@@ -1,0 +1,23 @@
+<h2>{{list.listName}}</h2>
+<div
+  (cdkDropListDropped)="onDrop($event)"
+  [cdkDropListConnectedTo]="listsIds"
+  [cdkDropListData]="list.tasks"
+  [id]="list.listId.toString()"
+  cdkDropList
+  class="example-list">
+  <app-item (deleteEvent)="deleteItemFromList($event)" *ngFor="let item of list.tasks" [item]="item"
+            [projectId]="projectId"></app-item>
+</div>
+<form (submit)="addItemToList()" [formGroup]="todoItemForm" class="add-task">
+  <div class="inputWrapper">
+    <p class="label">Új kártya név</p>
+    <input [formControl]="todoItemForm.controls.item" class="input"
+           placeholder="Ex. Wash the dishes.. :(">
+  </div>
+  <button aria-label="create task" mat-icon-button matTooltip="Új kártya hozzáadása a listához."
+          matTooltipHideDelay=".5s"
+          matTooltipPosition="below" type="submit">
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+</form>

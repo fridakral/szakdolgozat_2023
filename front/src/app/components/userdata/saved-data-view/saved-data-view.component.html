@@ -1,0 +1,169 @@
+<form (ngSubmit)="updateDetails()" [formGroup]="savedForm" class="full">
+  <mat-list class="list" role="list">
+    <mat-list-item [ngClass]="{'grey-bg': shouldChangeToNameEdit}" class="li li-big" role="listitem">
+      <div class="list-item list-item-big">
+        <div *ngIf="shouldChangeToNameEdit; then nameEdit else name"></div>
+        <ng-template #name>
+          <p class="first-col">Név</p>
+          <p>{{savedForm.controls.firstName.value}} {{savedForm.controls.lastName.value}}</p>
+          <button (click)="shouldChangeToNameEdit = !shouldChangeToNameEdit" class="yellow_button" type="button">
+            Szerkesztés
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-template>
+        <ng-template #nameEdit>
+          <div class="form-item">
+            <div class="row">
+              <div class="inputWrapper">
+                <p class="label">Keresztnév szerkesztése</p>
+                <input class="input" formControlName="firstName" placeholder="" type="text">
+                <span
+                  *ngIf="savedForm.controls.firstName.hasError('required') && savedForm.controls.firstName.touched"
+                  class="inputErrorMsgRed">Kötelező!</span>
+              </div>
+              <button (click)="shouldChangeToNameEdit = !shouldChangeToNameEdit" class="dark_button" type="button">
+                Mégsem
+              </button>
+            </div>
+            <div class="row">
+              <div class="inputWrapper">
+                <p class="label">Vezetéknév szerkesztése</p>
+                <input class="input" formControlName="lastName" placeholder="" type="text">
+                <span
+                  *ngIf="savedForm.controls.lastName.hasError('required') && savedForm.controls.lastName.touched"
+                  class="inputErrorMsgRed">Kötelező!</span>
+              </div>
+
+              <button class="light_button" type="submit">Mentés</button>
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
+    </mat-list-item>
+    <mat-divider class="divider"></mat-divider>
+    <mat-list-item [ngClass]="{'grey-bg': shouldChangeToBirthPlaceEdit}" class="li" role="listitem">
+      <div class="list-item">
+        <div *ngIf="shouldChangeToBirthPlaceEdit; then birthPlaceEdit else birthPlace"></div>
+        <ng-template #birthPlace>
+          <p class="first-col">Születési hely</p>
+          <p>{{savedForm.controls.placeOfBirth.value}}</p>
+          <button (click)="shouldChangeToBirthPlaceEdit = !shouldChangeToBirthPlaceEdit" class="yellow_button"
+                  type="button">Szerkesztés
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-template>
+        <ng-template #birthPlaceEdit>
+          <div class="inputWrapper">
+            <p class="label">Születési hely szerkesztése</p>
+            <input class="input" formControlName="placeOfBirth" placeholder="" type="text">
+          </div>
+          <button (click)="shouldChangeToBirthPlaceEdit = !shouldChangeToBirthPlaceEdit" class="dark_button"
+                  type="button">Mégsem
+          </button>
+          <button class="light_button" type="submit">Mentés</button>
+        </ng-template>
+      </div>
+    </mat-list-item>
+    <mat-divider class="divider"></mat-divider>
+    <mat-list-item [ngClass]="{'grey-bg': shouldChangeToBirthDateEdit}" class="li" role="listitem">
+      <div class="list-item">
+        <div *ngIf="shouldChangeToBirthDateEdit; then birthTimeEdit else birthTime"></div>
+        <ng-template #birthTime>
+
+          <p class="first-col">Születési idő</p>
+          <p>{{savedForm.controls.dateOfBirth?.value | date: "YYYY.MM.dd."}}</p>
+          <button (click)="shouldChangeToBirthDateEdit = !shouldChangeToBirthDateEdit" class="yellow_button"
+                  type="button">Szerkesztés
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-template>
+        <ng-template #birthTimeEdit>
+          <mat-form-field appearance="outline">
+            <mat-label>Születési idő szerkesztése</mat-label>
+            <input [matDatepicker]="dp3" formControlName="dateOfBirth" matInput>
+            <mat-hint>YYYY.MM.dd.</mat-hint>
+            <mat-datepicker-toggle [for]="dp3" matIconSuffix></mat-datepicker-toggle>
+            <mat-datepicker #dp3></mat-datepicker>
+          </mat-form-field>
+          <button (click)="shouldChangeToBirthDateEdit = !shouldChangeToBirthDateEdit" class="dark_button"
+                  type="button">Mégsem
+          </button>
+          <button class="light_button" type="submit">Mentés</button>
+        </ng-template>
+      </div>
+    </mat-list-item>
+    <mat-divider class="divider"></mat-divider>
+    <mat-list-item [ngClass]="{'grey-bg': shouldChangeToAddressEdit}" class="li" role="listitem">
+      <div class="list-item">
+        <div *ngIf="shouldChangeToAddressEdit; then addressEdit else address"></div>
+        <ng-template #address>
+          <p class="first-col">Lakcím</p>
+          <p>{{savedForm.controls.address.value}}</p>
+          <button (click)="shouldChangeToAddressEdit = !shouldChangeToAddressEdit" class="yellow_button"
+                  type="button">Szerkesztés
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-template>
+        <ng-template #addressEdit>
+          <div class="inputWrapper">
+            <p class="label">Lakcím szerkesztése</p>
+            <input class="input" formControlName="address" placeholder="" type="text">
+          </div>
+          <button (click)="shouldChangeToAddressEdit = !shouldChangeToAddressEdit" class="dark_button"
+                  type="button">Mégsem
+          </button>
+          <button class="light_button" type="submit">Mentés</button>
+        </ng-template>
+      </div>
+    </mat-list-item>
+    <mat-divider class="divider"></mat-divider>
+    <mat-list-item [ngClass]="{'grey-bg': shouldChangeToBankAccNumEdit}" class="li" role="listitem">
+      <div class="list-item">
+        <div *ngIf="shouldChangeToBankAccNumEdit; then bankEdit else bank"></div>
+        <ng-template #bank>
+          <p class="first-col">Bankszámla szám</p>
+          <p>{{savedForm.controls.bankAccountNumber.value}}</p>
+          <button (click)="shouldChangeToBankAccNumEdit = !shouldChangeToBankAccNumEdit" class="yellow_button"
+                  type="button">Szerkesztés
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-template>
+        <ng-template #bankEdit>
+          <div class="inputWrapper">
+            <p class="label">Bankszámla szám szerkesztése</p>
+            <input class="input" formControlName="bankAccountNumber" placeholder="" type="text">
+          </div>
+          <button (click)="shouldChangeToBankAccNumEdit = !shouldChangeToBankAccNumEdit" class="dark_button"
+                  type="button">Mégsem
+          </button>
+          <button class="light_button" type="submit">Mentés</button>
+        </ng-template>
+      </div>
+    </mat-list-item>
+    <mat-divider class="divider"></mat-divider>
+    <mat-list-item [ngClass]="{'grey-bg': shouldChangeToIdCardNumEdit}" class="li" role="listitem">
+      <div class="list-item">
+        <div *ngIf="shouldChangeToIdCardNumEdit; then idcardEdit else idcard"></div>
+        <ng-template #idcard>
+          <p class="first-col">Személyi igazolvány szám</p>
+          <p>{{savedForm.controls.identityCardNumber.value}}</p>
+          <button (click)="shouldChangeToIdCardNumEdit = !shouldChangeToIdCardNumEdit" class="yellow_button"
+                  type="button">Szerkesztés
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-template>
+        <ng-template #idcardEdit>
+          <div class="inputWrapper">
+            <p class="label">Személyi igazolvány szám szerkesztése</p>
+            <input class="input" formControlName="identityCardNumber" placeholder="" type="text">
+          </div>
+          <button (click)="shouldChangeToIdCardNumEdit = !shouldChangeToIdCardNumEdit" class="dark_button"
+                  type="button">Mégsem
+          </button>
+          <button class="light_button" type="submit">Mentés</button>
+        </ng-template>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</form>

@@ -1,0 +1,36 @@
+<app-header></app-header>
+<app-right-nav></app-right-nav>
+<div class="wrapper">
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+  <div class="circle3"></div>
+  <div class="circle4"></div>
+  <div class="menu-wrapper">
+    <h2 style="margin: 16px">Személyes adatok</h2>
+    <div class="menu">
+      <a (click)="setUserDataToActive()" [ngClass]="whichIsActive === 'userData' ? 'active' : 'not-active'">Felhasználói
+        adatok</a>
+      <a (click)="setSavedDateToActive()" [ngClass]="whichIsActive === 'savedData' ? 'active' : 'not-active'">Munkáltató
+        által tárolt adatok</a>
+      <a (click)="setSecurityToActive()" [ngClass]="whichIsActive === 'security' ? 'active' : 'not-active'">Jelszó és
+        biztonság</a>
+    </div>
+  </div>
+  <div class="content">
+    <ng-container *ngTemplateOutlet="primaryTemplate"></ng-container>
+  </div>
+</div>
+<ng-template #userData>
+  <app-user-data-view (newDetailedUser)="setNewDetailedUser($event)" [detailedUser]="detailedUser"
+                      class="full"></app-user-data-view>
+</ng-template>
+<ng-template #savedData>
+  <app-saved-data-view (newDetailedUser)="setNewDetailedUser($event)" [detailedUser]="detailedUser"
+                       class="full"></app-saved-data-view>
+</ng-template>
+<ng-template #security>
+  <app-security-view class="full"></app-security-view>
+</ng-template>
+<ng-template #init>
+  <img alt="settingspng" class="settings_img" src="./assets/pictures/settings.png">
+</ng-template>

@@ -1,0 +1,19 @@
+
+  <div id="table">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+      <ng-container [matColumnDef]="column" *ngFor="let column of columns">
+        <mat-header-cell *matHeaderCellDef style="font-size: medium;" [ngStyle]="{'background': '#3D8AA4'}">
+          {{ column }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element[column] }}
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10, 20]"
+      showFirstLastButtons 
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>

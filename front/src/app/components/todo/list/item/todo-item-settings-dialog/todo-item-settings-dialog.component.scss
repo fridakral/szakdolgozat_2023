@@ -1,0 +1,22 @@
+.inputWrapper {
+  width: 100%
+}
+
+.data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .data-title-text {
+    margin-right: auto;
+    margin-bottom: 0 !important;
+  }
+}
+
+.dialog-action {
+  gap: 1em;
+}
+
+.example-chip-list {
+  width: 100%;
+}

@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <app-right-nav></app-right-nav>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+  <div class="circle3"></div>
+  <div class="circle4"></div>
+  <div class="tab-wrapper">
+    <mat-tab-group class="tab-group">
+      <mat-tab *ngFor="let project of projects" [label]="project.name">
+        <div class="cards">
+          <app-project [basicProjectDTO]=project class="project"></app-project>
+          <form (ngSubmit)="createNewProject()" [formGroup]="newProjectForm" class="create-new-project">
+            <div class="inputWrapper">
+              <p class="white-label">New project name</p>
+              <input [formControl]="newProjectForm.controls.name" class="input" placeholder="New project name.."
+                     type="text">
+              <span *ngIf="newProjectForm.controls.name.invalid && newProjectForm.controls.name.touched"
+                    class="inputErrorMsg">Required!</span>
+            </div>
+            <button class="dark_button" type="submit">new project</button>
+          </form>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+
+</div>

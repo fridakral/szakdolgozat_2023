@@ -1,0 +1,33 @@
+<form (ngSubmit)="saveUserDetails()" [formGroup]="userForm" class="full">
+  <div class="left">
+    <h1>Példa Péter</h1>
+    <div class="inputWrapper">
+      <p class="label">Munkaköri leírás</p>
+      <textarea class="input" formControlName="postDesc" id="about" placeholder="" type="text"></textarea>
+    </div>
+  </div>
+  <div class="right">
+    <div class="inputWrapper">
+      <p class="label">Felhasználónév</p>
+      <input class="input" formControlName="username" id="username" placeholder="példapéter" type="text">
+      <span *ngIf="userForm.controls.username.hasError('required') && userForm.controls.username.touched"
+            class="inputErrorMsgRed">Kötelező!</span>
+    </div>
+    <div class="inputWrapper">
+      <p class="label">Email</p>
+      <input class="input" formControlName="email" id="email" placeholder="peldapeti@gmail.com" type="text">
+      <span *ngIf="userForm.controls.email.hasError('required') && userForm.controls.email.touched"
+            class="inputErrorMsgRed">Kötelező!</span>
+      <span *ngIf="userForm.controls.email.hasError('email') && userForm.controls.email.touched"
+            class="inputErrorMsgRed">Nem megfelelő formátum!</span>
+    </div>
+    <div class="inputWrapper">
+      <p class="label">Munkakör</p>
+      <input class="input" formControlName="post" id="post" placeholder="Developer" type="text">
+    </div>
+    <div class="action">
+      <button class="light_button" type="submit">Mentés</button>
+      <button (click)="setFormToDefault()" class="dark_button" type="button">Mégsem</button>
+    </div>
+  </div>
+</form>

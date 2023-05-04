@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "tenant1.datasource",
+      "type": "hr.config.multitenancy.tenantDetails.Tenant1Details",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant1Details"
+    },
+    {
+      "name": "tenant2.datasource",
+      "type": "hr.config.multitenancy.tenantDetails.Tenant2Details",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant2Details"
+    }
+  ],
+  "properties": [
+    {
+      "name": "tenant1.datasource.driver",
+      "type": "java.lang.String",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant1Details"
+    },
+    {
+      "name": "tenant1.datasource.url",
+      "type": "java.lang.String",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant1Details"
+    },
+    {
+      "name": "tenant1.datasource.username",
+      "type": "java.lang.String",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant1Details"
+    },
+    {
+      "name": "tenant2.datasource.driver",
+      "type": "java.lang.String",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant2Details"
+    },
+    {
+      "name": "tenant2.datasource.url",
+      "type": "java.lang.String",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant2Details"
+    },
+    {
+      "name": "tenant2.datasource.username",
+      "type": "java.lang.String",
+      "sourceType": "hr.config.multitenancy.tenantDetails.Tenant2Details"
+    }
+  ],
+  "hints": []
+}

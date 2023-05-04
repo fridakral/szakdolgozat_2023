@@ -1,0 +1,14 @@
+<div class="nav">
+  <div [ngClass]="nav === '/userData' ? 'active' : 'not-active'" class="nav-item">
+    <p>Alkalmazotti adatkezelő</p>
+    <i (click)="users()" alt="asd" class="bi bi-person-rolodex"></i>
+  </div>
+  <div [ngClass]="nav === '/todoNav' ? 'active' : 'not-active'" class="nav-item">
+    <p>Projektkezelő</p>
+    <i (click)="navToTodo()" alt="asd" class="bi bi-graph-up-arrow"></i>
+  </div>
+  <div [ngClass]="nav === '/asd' ? 'active' : 'not-active'" class="nav-item">
+    <p>Munkaidő nyilvántartó</p>
+    <i (click)="navToProjects()" alt="asd" class="bi bi-clock-history"></i>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="full">
+  <form (ngSubmit)="saveNewPassword()" [formGroup]="passwordForm" class="left">
+    <h1>Jelszó megváltoztatása</h1>
+    <div class="inputWrapper">
+      <p class="label">Új jelszó</p>
+      <input class="input" formControlName="newPass" id="newPass" placeholder="" type="password">
+      <span *ngIf="passwordForm.controls.newPass.hasError('required') && passwordForm.controls.newPass.touched"
+            class="inputErrorMsgRed">Kötelező!</span>
+    </div>
+    <div class="inputWrapper">
+      <p class="label">Új jelszó megerősítése</p>
+      <input class="input" formControlName="newPassAgain" id="newPassAgain" placeholder="" type="password">
+      <span
+        *ngIf="passwordForm.controls.newPassAgain.hasError('required') && passwordForm.controls.newPassAgain.touched"
+        class="inputErrorMsgRed">Kötelező!</span>
+    </div>
+    <div class="inputWrapper">
+      <p class="label">Jelenlegi jelszó</p>
+      <input class="input" formControlName="currentPass" id="currentPass" placeholder="" type="password">
+      <span
+        *ngIf="passwordForm.controls.currentPass.hasError('required') && passwordForm.controls.currentPass.touched"
+        class="inputErrorMsgRed">Kötelező!</span>
+    </div>
+    <button class="light_button" type="submit">Mentés</button>
+  </form>
+  <div class="right">
+    <img alt="pass-img" src="./assets/pictures/change_pw.png">
+  </div>
+</div>

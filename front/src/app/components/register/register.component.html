@@ -1,0 +1,58 @@
+<div class="register">
+  <div class="circle left"></div>
+  <div class="circle right-up"></div>
+  <div class="circle right-down"></div>
+  <div class="inner">
+    <div class="left-section">
+      <div class="circle inner-left"></div>
+      <div class="circle inner-right"></div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="inner-left-content">
+        <h3>Regisztrálj pillanatok alatt!</h3>
+        <div class="register_grid">
+          <div class="inputWrapper right">
+            <p class="white-label">Vezetéknév</p>
+            <input class="input" formControlName="lastName" placeholder="Vezetéknév" style="justify-self: end"
+                   type="text">
+            <span *ngIf="lastName?.hasError('required') && lastName?.touched" class="inputErrorMsg">Kötelező!</span>
+          </div>
+          <div class="inputWrapper">
+            <p class="white-label">Keresztnév</p>
+            <input class="input" formControlName="firstName" placeholder="Keresztnév" type="text">
+            <span *ngIf="firstName?.hasError('required') && firstName?.touched" class="inputErrorMsg">Kötelező!</span>
+          </div>
+          <div class="inputWrapper right">
+            <p class="white-label">Felhasználónév</p>
+            <input class="input" formControlName="username" placeholder="Felhasználónév" style="justify-self: end"
+                   type="text">
+            <span *ngIf="username?.hasError('required') && username?.touched" class="inputErrorMsg">Kötelező!</span>
+          </div>
+          <div class="inputWrapper">
+            <p class="white-label">Jelszó</p>
+            <input class="input" formControlName="password" placeholder="Jelszó" type="password">
+            <span *ngIf="password?.hasError('required') && password?.touched"
+                  class="inputErrorMsg">{{passwordErrorMsg}}</span>
+          </div>
+          <div class="inputWrapper right">
+            <p class="white-label">Tenant</p>
+            <input class="input" formControlName="tenant" placeholder="Tenant" style="justify-self: end" type="text">
+            <span *ngIf="tenant?.hasError('required') && tenant?.touched" class="inputErrorMsg">Kötelező!</span>
+          </div>
+          <div class="inputWrapper">
+            <p class="white-label">Email-cím</p>
+            <input class="input" formControlName="email" placeholder="Email-cím" type="text">
+            <span *ngIf="email?.hasError('required') && email?.touched" class="inputErrorMsg">{{emailErrorMsg}}</span>
+          </div>
+        </div>
+        <button class="dark_button" type="submit">Regisztráció</button>
+      </form>
+    </div>
+    <div class="right-section">
+      <form class="inner-right-content">
+        <h3>Helló!</h3>
+        <p>Már van fiókod?</p>
+        <p>Jelentkezz be!</p>
+        <button (click)="goToLogin()" class="light_button">Bejelentkezés</button>
+      </form>
+    </div>
+  </div>
+</div>

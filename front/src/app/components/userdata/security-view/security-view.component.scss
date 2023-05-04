@@ -1,0 +1,38 @@
+.full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  gap: 1em;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 100%;
+  }
+
+  .right {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+
+      max-height: 100%;
+      aspect-ratio: 1;
+      width: 100%;
+    }
+  }
+}
+
+.inputWrapper {
+  width: 90%;
+}

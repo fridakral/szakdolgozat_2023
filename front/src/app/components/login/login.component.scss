@@ -1,0 +1,119 @@
+.login {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+
+  &.left {
+    background-color: #000F7C;
+    top: -20px;
+    left: -80px;
+  }
+
+  &.right-up {
+    right: -100px;
+    top: 0;
+    background-color: #7000FF;
+  }
+
+  &.right-down {
+    bottom: -100px;
+    right: -100px;
+    background-color: #0018B3;
+  }
+}
+
+.inner {
+  width: 60%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+
+  .left-section {
+    background: linear-gradient(90deg, #0018B3 0%, #2337af 25%, #3545ad 50%, #5260b7 100%);
+    height: 100%;
+    width: 70%;
+    box-shadow: 4px 4px 4px 8px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    border-radius: 20px;
+    overflow: hidden;
+
+    .inner-left {
+      background-color: #AEB9FF;
+      top: 80%;
+      left: -50px;
+    }
+
+    .inner-right {
+      background-color: #D9DEFF;
+      top: -50px;
+      right: -50px;
+    }
+
+    .inner-left-content {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-evenly;
+      width: 50%;
+      //height: 60%;
+      z-index: 2;
+    }
+  }
+
+  .right-section {
+    background-color: white;
+    position: absolute;
+    height: 80%;
+    width: 45%;
+    right: 0;
+    box-shadow: 4px 4px 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 1em;
+
+    .inner-right-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+
+      .login-header-text {
+        color: #7000FF;
+      }
+
+      .inputWrapper {
+        width: 100%;
+      }
+
+    }
+  }
+}
+
+
+

@@ -1,0 +1,10 @@
+<div cdkDrag class="example-box">
+  <div class="data">
+    <h2>{{item.taskName}}</h2>
+    <span>{{item.taskDescription}}</span>
+    <mat-chip *ngFor="let item of item.usersOnTask">{{item}}</mat-chip>
+  </div>
+  <button (click)="openItemDialog(item)" mat-icon-button>
+    <mat-icon>settings</mat-icon>
+  </button>
+</div>

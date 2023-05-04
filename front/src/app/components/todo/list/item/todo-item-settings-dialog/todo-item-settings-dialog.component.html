@@ -1,0 +1,108 @@
+<div *ngIf="show; then primaryView"></div>
+<ng-template #warningView>
+  <mat-dialog-content class="mat-typography">
+    <h1>Biztos hogy be akarod zárni az ablakot?</h1>
+    <h2>A módosításaid el fognak veszni!</h2>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="dialog-action">
+    <button [mat-dialog-close]="null" class="dark_button" type="button">Close</button>
+    <button (click)="saveTodoData()" class="light_button" type="button">Save</button>
+  </mat-dialog-actions>
+</ng-template>
+<ng-template #dataView>
+  <div class="data-header" mat-dialog-title>
+    <h2 class="data-title-text">{{todoItemForm.controls.taskName.value}}</h2>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="row">
+      <h2>Leírás</h2>
+      <p>{{todoItemForm.controls.taskDescription.value}}</p>
+    </div>
+    <div class="row">
+      <h2>Létrehozás dátuma</h2>
+      <p>{{data.taskCreatedOn}}</p>
+    </div>
+    <div class="row">
+      <h2>Határidő</h2>
+      <p>{{todoItemForm.controls.taskDueDate.value}}</p>
+    </div>
+    <div class="row">
+      <h2>Tagok</h2>
+      <ng-container
+        *ngTemplateOutlet="todoItemForm.controls.usersOnTask.value.length !== 0 ? usersOnTask : noUserOnTask">
+      </ng-container>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="dialog-action">
+    <button (click)="deleteItemFromList(data)" mat-icon-button>
+      <mat-icon color="warn">
+        delete_forever
+      </mat-icon>
+    </button>
+    <button class="dark_button" mat-dialog-close>Close</button>
+    <button (click)="switchViews('form')" class="light_button">Edit</button>
+  </mat-dialog-actions>
+</ng-template>
+<ng-template #formView>
+  <h2 mat-dialog-title>{{data.taskName}}</h2>
+  <form (ngSubmit)="saveTodoData()" [formGroup]="todoItemForm">
+    <mat-dialog-content class="mat-typography">
+      <div class="inputWrapper">
+        <p class="label">Új kártya név</p>
+        <input [formControl]="todoItemForm.controls.taskName" class="input" id="taskname"
+               placeholder="Create pull request." type="text">
+        <span *ngIf="todoItemForm.controls.taskName.hasError('required') && todoItemForm.controls.taskName.touched"
+              class="inputErrorMsgRed">Kötelező!</span>
+      </div>
+      <div class="inputWrapper">
+        <p class="label">Új kártya név</p>
+        <input [formControl]="todoItemForm.controls.taskDescription" class="input"
+               placeholder="Create pull request." type="text">
+        <span
+          *ngIf="todoItemForm.controls.taskDescription.hasError('required') && todoItemForm.controls.taskDescription.touched"
+          class="inputErrorMsgRed">Kötelező!</span>
+      </div>
+      <mat-form-field appearance="fill" style="width: 100%">
+        <mat-label>Új határidő</mat-label>
+        <input [formControl]="todoItemForm.controls.taskDueDate" [matDatepicker]="dp3" matInput>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle [for]="dp3" matIconSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dp3></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="width: 100%">
+        <mat-label>Új tag</mat-label>
+        <mat-select (selectionChange)="change($event)" [value]="selectedUser">
+          <mat-option *ngFor="let user of allUsersInProject" [value]="user.username">
+            {{user.username}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-container
+        *ngTemplateOutlet="todoItemForm.controls.usersOnTask.value.length === 0 ? noUserOnTask : usersOnTask"></ng-container>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="dialog-action">
+      <button (click)="closeDialog()" class="dark_button" type="button">Bezárás</button>
+      <button class="light_button" type="submit">Mentés</button>
+    </mat-dialog-actions>
+  </form>
+</ng-template>
+
+<ng-template #noUserOnTask>
+  <p>Jelenleg nincs senki a kártyához adva!</p>
+</ng-template>
+
+<ng-template #usersOnTask>
+  <mat-chip-listbox
+    class="example-chip">
+    <mat-chip
+      (removed)="remove(user)"
+      *ngFor="let user of todoItemForm.controls.usersOnTask.value"
+      class="example-box">
+      {{user}}
+      <button [attr.aria-label]="'remove ' + user" matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+  </mat-chip-listbox>
+</ng-template>

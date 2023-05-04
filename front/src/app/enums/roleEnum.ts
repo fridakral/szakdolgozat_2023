@@ -1,0 +1,3 @@
+export enum roleEnum {
+  BEOSZTOTT = "ROLE_EMPLOYEE", PROJEKTVEZETO = "ROLE_MANAGER", VEZETO = "ROLE_BOSS"
+}

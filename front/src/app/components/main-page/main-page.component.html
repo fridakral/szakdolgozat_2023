@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="mainWrapper">
+  <div class="notification">
+    <i (click)="openNotificationDialog($event)" alt="notificationImg" class="bi bi-envelope-check notificationImg"></i>
+  </div>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+  <div class="circle3"></div>
+  <div class="circle4"></div>
+  <div class="cards">
+    <div class="card">
+      <div class="cardHeader">
+        <p>Alkalmazotti adatkezelő</p>
+      </div>
+      <div class="cardBody">
+        <div class="description-wrapper">
+          <p class="cardDiscription">Ellenőrizd és szerkezd saját, vagy alkalmazottaid adatait hatékonyan az adatkezelő
+            és
+            nyilvántartó rendszerünk felületén!</p>
+        </div>
+        <button (click)="navUserData()" class="yellow_button" type="button">Tovább</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="cardHeader">
+        <p>Projektkezelő</p>
+      </div>
+      <div class="cardBody">
+        <div class="description-wrapper">
+          <p class="cardDiscription">A projektkezelővel egyszerűen menedzselheted a feladataidat. Továbbá nagyszerű
+            alapot biztosít az előrehaladásod dokumentálásában is. </p>
+        </div>
+        <div style="height: 48px; width: 100%">
+          <button (click)="navToTodo()" class="yellow_button" type="button">Tovább</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="cardHeader">
+        <p>Munkaidő nyilvántartó</p>
+      </div>
+      <div class="cardBody">
+        <div class="description-wrapper">
+          <p class="cardDiscription">Kövesd a munkával töltött idődet és egyszerűsítsd annak dokumentálását
+            alkalmazásunkkal. A jelenléti ívet pedig egy kattintással létrehozhatod!</p>
+        </div>
+        <button class="yellow_button">Tovább</button>
+      </div>
+    </div>
+  </div>
+</div>

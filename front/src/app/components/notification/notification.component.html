@@ -1,0 +1,42 @@
+<div class="dialogWrapper">
+  <div class="dialogHeader" id="dialogHeader" mat-dialog-title>
+    <i class="bi bi-envelope-check notificationImg"></i>
+  </div>
+  <mat-dialog-content>
+    <div *ngFor="let n of notifications">
+      <mat-expansion-panel (closed)="panelOpenState = false"
+                           (opened)="panelOpenState = true"
+                           *ngIf="n.notificationType === 'datachange'; else register"
+                           class="notificationItem"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{n.lastName}} {{n.firstName}} adatmódosítási kérést küldött!
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="verification-message-body">
+          <p>Szeretnéd megerősíteni az adatmódosítási kérést?</p>
+          <button (click)="verifyUser(n)" class="light_button" type="button">Igen</button>
+          <button (click)="deleteUser(n)" class="dark_button" type="button">Nem</button>
+        </div>
+      </mat-expansion-panel>
+      <ng-template #register>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="notificationItemBody">
+              {{n.lastName}} {{n.firstName}} regisztrációs kérést küldött!
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="verification-message-body">
+            <p>Szeretnéd megerősíteni a regisztrációs kérést?</p>
+            <button (click)="verifyUser(n)" class="light_button" type="button">Igen</button>
+            <button (click)="deleteUser(n)" class="dark_button" type="button">Nem</button>
+          </div>
+        </mat-expansion-panel>
+      </ng-template>
+    </div>
+  </mat-dialog-content>
+  <ng-template #noNotifications>
+    <h1>Jelenleg nincsenek üzenetek!</h1>
+  </ng-template>
+</div>

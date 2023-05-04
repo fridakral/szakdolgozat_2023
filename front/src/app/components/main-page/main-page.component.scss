@@ -1,0 +1,140 @@
+.mainWrapper {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-10deg, #2643FF 0%, #8494FF 66%, #FFF7F9 100%);;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  .cards {
+    z-index: 2;
+    height: 60%;
+    width: inherit;
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+
+    .card {
+      padding: 5px;
+      border-radius: 10px;
+      text-align: center;
+      background-color: white;
+      width: 25%;
+      height: 100%;
+
+      .cardHeader {
+        border-radius: 10px;
+        background-color: #FFC451;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25%;
+
+        p {
+          font-size: xx-large;
+          font-weight: 500;
+        }
+      }
+
+      .cardBody {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 75%;
+
+        .description-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow-y: auto;
+        }
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    .card:hover {
+      .cardHeader {
+        transition: .5s;
+        background-color: #7000FF;
+      }
+
+      .yellow_button {
+        transition: .5s;
+        background-color: #7000FF;
+      }
+
+      .yellow_button:active {
+        transition: .5s;
+        background-color: #5600d2;
+      }
+    }
+  }
+}
+
+
+.circle1 {
+  position: absolute;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background-color: #7000FF;
+  top: 80%;
+  left: -43px;
+}
+
+.circle2 {
+  position: absolute;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background-color: #1B39FF;
+  top: 15%;
+  left: 33%;
+}
+
+.circle3 {
+  position: absolute;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: #B4BEFF;
+  top: 70%;
+  left: 66%;
+}
+
+.circle4 {
+  position: absolute;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  background-color: #9E52FF;
+  top: -10%;
+  left: 80%;
+}
+
+
+.notification {
+  position: absolute;
+  top: 10%;
+  left: 90%;
+  z-index: 3;
+
+  .notificationImg {
+    font-size: 40px;
+    color: #4800a8;
+  }
+
+  .notificationImg:hover {
+    transition: .5s;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}

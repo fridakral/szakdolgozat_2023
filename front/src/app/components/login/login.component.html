@@ -1,0 +1,39 @@
+<!--<app-header></app-header>-->
+<div class="login">
+  <div class="circle left"></div>
+  <div class="circle right-up"></div>
+  <div class="circle right-down"></div>
+  <div class="inner">
+    <div class="left-section">
+      <div class="circle inner-left"></div>
+      <div class="circle inner-right"></div>
+      <div class="inner-left-content">
+        <h4>Üdv a Service Hero-nál</h4>
+        <h1>Helló!</h1>
+        <p>Ha még nem ismersz minket, akkor regisztrálj az adataid megadásával</p>
+        <button (click)="goToRegister()" class="dark_button">Regisztráció</button>
+      </div>
+    </div>
+    <div class="right-section">
+      <form (ngSubmit)="login()" [formGroup]="userForm" class="inner-right-content">
+        <h4><span class="login-header-text">Bejenetkezés</span> a fiókodba</h4>
+        <div class="inputWrapper">
+          <p class="label">Felhasználónév</p>
+          <input class="input" formControlName="username" id="username" placeholder="Felhasználónév" type="text">
+          <span *ngIf="username?.hasError('required') && username?.touched" class="inputErrorMsgRed">Kötelező!</span>
+        </div>
+        <div class="inputWrapper">
+          <p class="label">Jelszó</p>
+          <input class="input" formControlName="password" id="password" placeholder="Jelszó" type="password">
+          <span *ngIf="password?.hasError('required') && password?.touched" class="inputErrorMsgRed">Kötelező!</span>
+        </div>
+        <div class="inputWrapper">
+          <p class="label">Tenant</p>
+          <input class="input" formControlName="tenant" id="tenantName" placeholder="Tenant" type="text">
+          <span *ngIf="tenant?.hasError('required') && tenant?.touched" class="inputErrorMsgRed">Kötelező!</span>
+        </div>
+        <button class="light_button" type="submit">Bejelentkezés</button>
+      </form>
+    </div>
+  </div>
+</div>

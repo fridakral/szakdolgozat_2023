@@ -1,0 +1,27 @@
+<div class="card-container">
+  <div class="card">
+    <div class="cardHeader">
+      <h4>{{basicProjectDTO.name}}</h4>
+    </div>
+    <div class="cardBody">
+      <div class="chart">
+        <canvas [datasets]="doughnutChartDatasets"
+                [labels]="doughnutChartLabels"
+                [legend]="true"
+                [options]="doughnutChartOptions"
+                [type]="'doughnut'"
+                baseChart
+                class="chart-canvas">
+        </canvas>
+      </div>
+      <div class="progress">
+        <p class="progress-text">Progress: {{progress | number : '1.0-2'}}%</p>
+        <mat-progress-bar [value]="progress" class="progress-bar" mode="determinate"></mat-progress-bar>
+      </div>
+      <div class="action">
+        <button (click)="getDetailedProject()" class="dark_button" type="button">Tovább</button>
+        <button (click)="projectSettings()" class="dark_button" type="button">Beállítások</button>
+      </div>
+    </div>
+  </div>
+</div>
