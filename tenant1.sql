@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Ápr 17. 09:32
+-- Létrehozás ideje: 2023. Máj 04. 13:33
 -- Kiszolgáló verziója: 10.4.24-MariaDB
 -- PHP verzió: 8.1.6
 
@@ -50,11 +50,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `address`, `bankAccountNumber`, `dateOfBirth`, `employeeRole`, `firstName`, `identityCardNumber`, `lastName`, `password`, `placeOfBirth`, `post`, `postDescription`, `username`, `isVerified`, `email`) VALUES
-(9, NULL, NULL, NULL, 2, 'F', NULL, 'F', '$2a$10$W/IxIWephAUXqPLqTDSlouIrdshE7Rud3UikBtYXH1QbmVkm74BEi', NULL, NULL, NULL, 'managerrr', b'1', 'lokospatrik8@gmail.com'),
-(10, NULL, NULL, NULL, 0, 'Friderika', NULL, 'Král', '$2a$10$691xw89aJRnAWwPnnv.u5eTPpj7uVD4EmTePMIaS15pTNseenKhmq', NULL, NULL, NULL, 'fridus', b'1', 'kralfrida@gmail.com'),
-(12, NULL, NULL, NULL, 2, 'asdasd', NULL, 'asdasd', '$2a$10$aiYCh8WMxn6jwngwrsY9/eeO4I9oxPFPOUHJBnjb5vPTkUoE/ubFy', NULL, NULL, NULL, 'asdasd', b'1', 'asdasd@asd.hu'),
-(13, NULL, NULL, NULL, 0, 'Friderika', NULL, 'Král', '$2a$10$9hB6f8QGEA7seA.iMQr/k.KgjlAdkAbckAWIDwjx3BjbmsQoYZ7mu', NULL, NULL, NULL, 'kralfrida', b'1', 'kralfrida@gmail.com'),
-(120, NULL, NULL, NULL, 2, 'asd', NULL, 'asd', '$2a$10$6htRUTVxVnh.eAARxn3RcuKZK9ogyTRNGbXRBDTnzBqdf4JxyFqIS', NULL, NULL, NULL, 'dsa', b'1', 'asd@asd.asd');
+(1, NULL, '0000000000000000', '1990-06-28 00:00:00', 0, 'Péter', '000000AA', 'Példa', '$2a$10$CNLXc3nuBfdx2lsVOmk4rOMgybWC.QyEQhjFfo14ABuMO6vloDGEa', 'Ököritófülpös', 'CEO', 'Vezetem a vállalkozást, főzöm a kávét a fejlesztőknek.', 'peldapeter', b'1', 'pelda@peter.hu'),
+(2, NULL, NULL, NULL, 2, 'Petra', NULL, 'Próba', '$2a$10$RwH9H5VB1aQhIy4YY3BTuOwMEOedgPZFa.QRK19uuk0oSEhi7E9sG', NULL, NULL, NULL, 'probapetra', b'1', 'proba@petra.hu');
 
 -- --------------------------------------------------------
 
@@ -71,7 +68,7 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(157);
+(12);
 
 -- --------------------------------------------------------
 
@@ -91,12 +88,9 @@ CREATE TABLE `list` (
 --
 
 INSERT INTO `list` (`id`, `name`, `number`, `project_id`) VALUES
-(117, 'Tasks', 1, 116),
-(118, 'In Progress', 2, 116),
-(119, 'Done', 3, 116),
-(152, 'Tasks', 1, 151),
-(153, 'In Progress', 2, 151),
-(154, 'Done', 3, 151);
+(5, 'Tasks', 1, 4),
+(6, 'In Progress', 2, 4),
+(7, 'Done', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -117,8 +111,7 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `createdOn`, `description`, `dueDate`, `name`) VALUES
-(116, '2023-04-07 13:33:17', NULL, '2024-04-07 13:33:16', 'sadasd'),
-(151, '2023-04-11 20:48:45', NULL, '2024-04-11 20:48:45', 'asd');
+(4, '2023-05-04 13:07:09', NULL, '2024-05-04 13:07:09', 'projekt1');
 
 -- --------------------------------------------------------
 
@@ -138,8 +131,8 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `manager`, `employee`, `project`) VALUES
-(115, b'1', 13, 116),
-(150, b'1', 13, 151);
+(3, b'1', 1, 4),
+(9, b'0', 2, 4);
 
 -- --------------------------------------------------------
 
@@ -162,11 +155,9 @@ CREATE TABLE `task` (
 --
 
 INSERT INTO `task` (`id`, `createdOn`, `description`, `dueDate`, `name`, `list_id`, `serial`) VALUES
-(147, '2023-04-11 17:46:28', 'ez egy próba task, egy próba leírással', '2024-06-05 02:00:00', 'b', 117, 1),
-(148, '2023-04-11 17:46:30', 'ez egy próba task, egy próba leírással', '2024-06-05 02:00:00', 'c', 117, 2),
-(149, '2023-04-11 20:24:12', 'ez egy próba task, egy próba leírással', '2024-06-05 02:00:00', 'asdasdasdadasds', 117, 3),
-(155, '2023-04-14 21:38:09', 'ez egy próba task, egy próba leírással', '2024-06-05 02:00:00', 'asd', 117, 4),
-(156, '2023-04-14 21:43:59', 'ez egy próba task, egy próba leírással', '2024-06-05 02:00:00', 'adsadsasd', 117, 5);
+(8, '2023-05-04 13:23:59', 'Elmosogatni a bögréket', '2023-05-05 00:00:00', 'Az első feladat', 5, 1),
+(10, '2023-05-04 13:26:09', 'Meleg van, kajakómásak vagyunk', '2024-06-05 02:00:00', 'Bevezetni a sziesztát az irodában', 5, 1),
+(11, '2023-05-04 13:27:16', 'Szakdolgozatnak talán jó lesz :(', '2024-06-05 02:00:00', 'Chh, tele van bug-gal ez a program', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -178,6 +169,14 @@ CREATE TABLE `task_employee` (
   `TaskEntity_id` bigint(20) NOT NULL,
   `employee_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `task_employee`
+--
+
+INSERT INTO `task_employee` (`TaskEntity_id`, `employee_id`) VALUES
+(8, 2),
+(8, 2);
 
 --
 -- Indexek a kiírt táblákhoz
